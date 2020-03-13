@@ -1,0 +1,54 @@
+require: rubocop-rspec
+
+AllCops:
+  TargetRubyVersion: 2.6.5
+  Exclude:
+    - 'bin/**/*'
+    - 'db/**/*'
+    - 'config/**/*'
+    - 'node_modules/**/*'
+    - 'spec/spec_helper.rb'
+    - 'spec/rails_helper.rb'
+    - 'spec/**/*'
+    - 'test/test_helper.rb'
+    - 'tmp/**/*'
+
+Metrics/AbcSize:
+  Exclude:
+
+Metrics/LineLength:
+  Exclude:
+    - Gemfile
+    - Rakefile
+  Max: 120
+
+Metrics/MethodLength:
+  Exclude:
+
+RSpec/ExampleLength:
+  Enabled: false
+
+RSpec/EmptyExampleGroup:
+  Enabled: false
+
+RSpec/MultipleExpectations:
+  Enabled: false
+
+RSpec/InstanceVariable:
+  Enabled: false
+
+Stylele/HashEachMethods:
+  Enabled: true
+
+Style/HashTransformKeys:
+  Enabled: true
+
+Style/HashTransformValues:
+  Enabled: true
+
+Style/ClassAndModuleChildren:
+  Exclude:
+    - test/channels/application_cable/connection_test.rb
+
+Style/Documentation:
+  Enabled: False

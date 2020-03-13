@@ -1,7 +1,9 @@
+# frozen_string_literal: true
+
 namespace :dev do
-  desc "Configura o ambiente de desenvolvimento"
+  desc 'Configura o ambiente de desenvolvimento'
   task setup: :environment do
-    100.times do |i|
+    100.times do |_i|
       Contact.create!(
         name: Faker::Name.name,
         email: Faker::Internet.email,
@@ -9,5 +11,4 @@ namespace :dev do
       )
     end
   end
-
 end
