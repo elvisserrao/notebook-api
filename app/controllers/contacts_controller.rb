@@ -7,7 +7,7 @@ class ContactsController < ApplicationController
   def index
     @contacts = Contact.all
 
-    render json: @contacts, only: [:name, :email]
+    render json: @contacts, only: [:name, :email, :kind_id]
   end
 
   # GET /contacts/1
@@ -52,3 +52,5 @@ class ContactsController < ApplicationController
     params.require(:contact).permit(:name, :email, :birthdate)
   end
 end
+
+# 4$$t1@2017
