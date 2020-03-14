@@ -3,7 +3,14 @@
 class Contact < ApplicationRecord
   belongs_to :kind
 
-  def as_json(options={})
-    super(only: [:name, :email])
+  def kind_description
+    kind.description
+  end
+
+  def as_json(_options = {})
+    super(
+      only: %i[name email],
+      methods: :kind_description
+    )
   end
 end

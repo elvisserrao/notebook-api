@@ -4,7 +4,7 @@ namespace :dev do
   desc 'Configura o ambiente de desenvolvimento'
   puts 'Gerando dados...'
   task setup: :environment do
-    kinds = ['Amigo', 'Trabalho', 'Familia', 'Conhecido']
+    kinds = %w[Amigo Trabalho Familia Conhecido]
     kinds.each do |kind|
       kind = Kind.create!(
         description: kind
