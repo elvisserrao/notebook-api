@@ -9,10 +9,18 @@ class Contact < ApplicationRecord
     kind.description
   end
 
+  def to_br
+    {
+      name: name,
+      email: email,
+      birthdate: (I18n.l(birthdate) unless birthdate.blank?)
+    }
+  end
+
   def as_json(_options = {})
     super(
-      only: %i[name email birthdate],
-      methods: :kind_description
+      only: %i[name email],
+      methods: %i[kind_description]
     )
   end
 end
