@@ -4,6 +4,8 @@ class Contact < ApplicationRecord
   belongs_to :kind
 
   def kind_description
+    return unless kind
+
     kind.description
   end
 
