@@ -3,7 +3,8 @@
 class Contact < ApplicationRecord
   belongs_to :kind
 
-  has_many :phones
+  has_many :phones, dependent: :destroy
+
   accepts_nested_attributes_for :phones, reject_if: ->(attributes) { attributes['number'].blank? }, allow_destroy: true
 
   def kind_description

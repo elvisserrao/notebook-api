@@ -37,6 +37,7 @@ class ContactsController < ApplicationController
 
   # DELETE /contacts/1
   def destroy
+    @contact.phones.destroy_all
     @contact.destroy
   end
 
