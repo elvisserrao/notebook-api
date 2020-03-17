@@ -37,6 +37,8 @@ end
 group :development do
   gem 'faker'
   gem 'listen', '>= 3.0.5', '< 3.2'
+  gem 'pry', '~> 0.12.2'
+  gem 'pry-rails'
   # Spring speeds up development by keeping your application running in the background. Read more: https://github.com/rails/spring
   gem 'rubocop-rspec'
   gem 'spring'
