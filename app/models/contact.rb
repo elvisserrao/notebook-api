@@ -35,8 +35,8 @@ class Contact < ApplicationRecord
 
   def as_json(_options = {})
     super(
-      only: %i[name email],
-      methods: %i[birth_date kind_description phone_numbers]
+      # only: %i[name email],
+      # methods: %i[birth_date kind_description phone_numbers]
     )
   end
 end
