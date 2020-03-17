@@ -31,10 +31,10 @@ class Contact < ApplicationRecord
   #   }
   # end
 
-  def as_json(_options = {})
-    super(
-      # only: %i[name email],
-      # methods: %i[birth_date kind_description phone_numbers]
-    )
-  end
+  # def as_json(_options = {})
+  #   super(
+  #     # only: %i[name email],
+  #     # methods: %i[birth_date kind_description phone_numbers]
+  #   )
+  # end
 end
