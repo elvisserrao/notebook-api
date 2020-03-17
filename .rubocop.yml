@@ -12,6 +12,7 @@ AllCops:
     - 'spec/**/*'
     - 'test/test_helper.rb'
     - 'tmp/**/*'
+    - 'lib/tasks/*'
 
 Metrics/AbcSize:
   Exclude:

@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 class PhonesController < ApplicationController
   # before_action :set_phone, only: %i[show update destroy]
 

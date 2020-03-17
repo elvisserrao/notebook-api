@@ -21,15 +21,14 @@ namespace :dev do
       puts "#{contact.name} was created with email: #{contact.email}"
     end
 
-    puts "Cadastrando os telefones..."
+    puts 'Cadastrando os telefones...'
 
     Contact.all.each do |contact|
-      Random.rand(5).times do |i|
+      Random.rand(5).times do |_i|
         phone = Phone.create!(number: Faker::PhoneNumber.phone_number)
         contact.phones << phone
         contact.save!
       end
     end
-    
   end
 end

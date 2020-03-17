@@ -4,7 +4,7 @@ class Contact < ApplicationRecord
   belongs_to :kind
 
   has_many :phones
-  accepts_nested_attributes_for :phones, reject_if: ->(attributes){ attributes['number'].blank? }, allow_destroy: true
+  accepts_nested_attributes_for :phones, reject_if: ->(attributes) { attributes['number'].blank? }, allow_destroy: true
 
   def kind_description
     return unless kind
@@ -15,9 +15,7 @@ class Contact < ApplicationRecord
   def phone_numbers
     return unless phones
 
-    phones.map do |phone|
-      phone.number
-    end
+    phones.map(&:number)
   end
 
   def birth_date
