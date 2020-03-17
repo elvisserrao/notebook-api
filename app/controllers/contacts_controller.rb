@@ -12,7 +12,7 @@ class ContactsController < ApplicationController
 
   # GET /contacts/1
   def show
-    render json: @contact, include: %i[kind phones]
+    render json: @contact, include: %i[kind phones address]
   end
 
   # POST /contacts
