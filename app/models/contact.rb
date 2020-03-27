@@ -3,7 +3,7 @@
 class Contact < ApplicationRecord
   belongs_to :kind
 
-  has_one :address
+  has_one :address, dependent: :destroy
   has_many :phones, dependent: :destroy
 
   accepts_nested_attributes_for :address, allow_destroy: true
@@ -24,20 +24,4 @@ class Contact < ApplicationRecord
   def birth_date
     I18n.l(birthdate) unless birthdate.blank?
   end
-
-  # def to_br
-  #   {
-  #     name: name,
-  #     email: email,
-  #     birthdate: (I18n.l(birthdate) unless birthdate.blank?)
-
-  #   }
-  # end
-
-  # def as_json(_options = {})
-  #   super(
-  #     # only: %i[name email],
-  #     # methods: %i[birth_date kind_description phone_numbers]
-  #   )
-  # end
 end

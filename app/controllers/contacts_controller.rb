@@ -29,7 +29,7 @@ class ContactsController < ApplicationController
   # PATCH/PUT /contacts/1
   def update
     if @contact.update(contact_params)
-      render json: @contact
+      render json: @contact, include: %i[kind]
     else
       render json: @contact.errors, status: :unprocessable_entity
     end
@@ -50,8 +50,6 @@ class ContactsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def contact_params
-    params.require(:contact).permit(:name, :email, :birthdate, :kind_id, phones_attributes: %i[id number _destroy])
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params)
   end
 end
-
-# 4$$t1@2017
