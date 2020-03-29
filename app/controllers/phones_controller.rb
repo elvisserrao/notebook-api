@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class PhonesController < ApplicationController
-  # before_action :set_phone, only: %i[show update destroy]
+  before_action :set_phones, only: %i[show]
 
   # # GET /phones
   # def index
@@ -10,10 +10,10 @@ class PhonesController < ApplicationController
   #   render json: @phones
   # end
 
-  # # GET /phones/1
-  # def show
-  #   render json: @phone
-  # end
+  # GET /phones/1
+  def show
+    render json: @phones
+  end
 
   # # POST /phones
   # def create
@@ -42,13 +42,13 @@ class PhonesController < ApplicationController
 
   # private
 
-  # # Use callbacks to share common setup or constraints between actions.
-  # def set_phone
-  #   @phone = phone.find(params[:id])
-  # end
+  # Use callbacks to share common setup or constraints between actions.
+  def set_phones
+    @phones = Contact.find(params[:contact_id]).phones
+  end
 
   # # Only allow a trusted parameter "white list" through.
   # def phone_params
-  #   params.require(:phone).permit(:number)
+  #   ActiveModelSerializers::Deserialization.jsonapi_parse(params)
   # end
 end

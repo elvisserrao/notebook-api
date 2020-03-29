@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AddressesController < ApplicationController
-  #   before_action :set_address, only: %i[show update destroy]
+    before_action :set_address, only: %i[show]
 
   #   # GET /addresses
   #   def index
@@ -10,10 +10,10 @@ class AddressesController < ApplicationController
   #     render json: @addresses
   #   end
 
-  #   # GET /addresses/1
-  #   def show
-  #     render json: @address
-  #   end
+    # GET /addresses/1
+    def show
+      render json: @address
+    end
 
   #   # POST /addresses
   #   def create
@@ -42,10 +42,10 @@ class AddressesController < ApplicationController
 
   #   private
 
-  #   # Use callbacks to share common setup or constraints between actions.
-  #   def set_address
-  #     @address = Address.find(params[:id])
-  #   end
+    # Use callbacks to share common setup or constraints between actions.
+    def set_address
+      @address = Contact.find(params[:contact_id]).address
+    end
 
   #   # Only allow a trusted parameter "white list" through.
   #   def address_params
