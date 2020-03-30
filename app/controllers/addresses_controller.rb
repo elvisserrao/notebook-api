@@ -1,54 +1,55 @@
 # frozen_string_literal: true
 
 class AddressesController < ApplicationController
-    before_action :set_address, only: %i[show]
+    before_action :set_contact, only: %i[show update]
 
   #   # GET /addresses
   #   def index
-  #     @addresses = Address.all
+  #     @contactes = Address.all
 
-  #     render json: @addresses
+  #     render json: @contactes
   #   end
 
-    # GET /addresses/1
+    # GET /contacts/1/address
+
     def show
-      render json: @address
+      render json: @contact.address
     end
 
-  #   # POST /addresses
+  #   # POST /contacts/1/address
   #   def create
-  #     @address = address.new(address_params)
+  #     @contact = address.new(address_params)
 
-  #     if @address.save
-  #       render json: @address, status: :created, location: @address
+  #     if @contact.save
+  #       render json: @contact, status: :created, location: @contact
   #     else
-  #       render json: @address.errors, status: :unprocessable_entity
+  #       render json: @contact.errors, status: :unprocessable_entity
   #     end
   #   end
 
-  #   # PATCH/PUT /addresses/1
-  #   def update
-  #     if @address.update(address_params)
-  #       render json: @address
-  #     else
-  #       render json: @address.errors, status: :unprocessable_entity
-  #     end
-  #   end
+    # PATCH/PUT /contacts/1/address
+    def update
+      if @contact.address.update(address_params)
+        render json: @contact.address
+      else
+        render json: @contact.errors, status: :unprocessable_entity
+      end
+    end
 
-  #   # DELETE /addresses/1
+  #   # DELETE /contacts/1/address
   #   def destroy
-  #     @address.destroy
+  #     @contact.destroy
   #   end
 
   #   private
 
     # Use callbacks to share common setup or constraints between actions.
-    def set_address
-      @address = Contact.find(params[:contact_id]).address
+    def set_contact
+      @contact = Contact.find(params[:contact_id])
     end
 
-  #   # Only allow a trusted parameter "white list" through.
-  #   def address_params
-  #     params.require(:address).permit(:description)
-  #   end
+    # Only allow a trusted parameter "white list" through.
+    def address_params
+      ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+    end
 end
