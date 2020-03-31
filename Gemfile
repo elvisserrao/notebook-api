@@ -5,6 +5,8 @@ git_source(:github) { |repo| "https://github.com/#{repo}.git" }
 
 ruby '2.6.5'
 
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard. 
+gem 'jwt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # A set of common locale data and translations to internationalize and/or localize your Rails applications.
