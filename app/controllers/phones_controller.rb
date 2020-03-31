@@ -1,54 +1,61 @@
 # frozen_string_literal: true
 
 class PhonesController < ApplicationController
-  before_action :set_phones, only: %i[show]
+  before_action :set_contact, only: %i[create show update destroy]
+  before_action :set_phone, only: %i[display update destroy]
 
-  # # GET /phones
-  # def index
-  #   @phones = Phone.all
-
-  #   render json: @phones
-  # end
-
-  # GET /phones/1
-  def show
-    render json: @phones
+  # GET /contacts/1/phone/1
+  def display
+    render json: @phone
   end
 
-  # # POST /phones
-  # def create
-  #   @phone = Phone.new(phone_params)
+  # GET /contacts/1/phones
+  def show
+    render json: @contact.phones
+  end
 
-  #   if @phone.save
-  #     render json: @phone, status: :created, location: @phone
-  #   else
-  #     render json: @phone.errors, status: :unprocessable_entity
-  #   end
-  # end
+  # POST /contacts/1/phone
+  def create
+    @contact.phones << Phone.new(phone_params)
 
-  # # PATCH/PUT /phones/1
-  # def update
-  #   if @phone.update(phone_params)
-  #     render json: @phone
-  #   else
-  #     render json: @phone.errors, status: :unprocessable_entity
-  #   end
-  # end
+    if @contact.phones.last.save
+      render json: @contact.phones, status: :created, location: contact_phones_url(@contact)
+    else
+      render json: @contact.errors, status: :unprocessable_entity
+    end
+  end
 
-  # # DELETE /phones/1
-  # def destroy
-  #   @phone.destroy
-  # end
+  # PATCH/PUT /contacts/1/phone or PATCH/PUT /contacts/1/phone/1
+  def update
+    if @phone.update(phone_params)
+      render json: @contact.phones
+    else
+      render json: @contact.errors, status: :unprocessable_entity
+    end
+  end
 
-  # private
+  # DELETE /contacts/1/phone or DELETE /contacts/1/phone/1
+  def destroy
+    @phone.destroy
+  end
+
+  private
 
   # Use callbacks to share common setup or constraints between actions.
-  def set_phones
-    @phones = Contact.find(params[:contact_id]).phones
+  def set_contact
+    @contact = Contact.find(params[:contact_id])
   end
 
-  # # Only allow a trusted parameter "white list" through.
-  # def phone_params
-  #   ActiveModelSerializers::Deserialization.jsonapi_parse(params)
-  # end
+  def set_phone
+    @phone = if phone_params
+               Phone.find(params[:id])
+             else
+               Phone.find(phone_params[:id])
+             end
+  end
+
+  # Only allow a trusted parameter "white list" through.
+  def phone_params
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params)
+  end
 end

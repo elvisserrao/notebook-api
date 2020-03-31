@@ -6,13 +6,22 @@ Rails.application.routes.draw do
 
     resource :phones, only: [:show]
     resource :phones, only: [:show], path: 'relationships/phones'
+    
+    resource :phone do 
+      get '/:id', to: 'phones#display'
+      patch '/:id', to: 'phones#update'
+      put '/:id', to: 'phones#update'
+      delete '/:id', to: 'phones#destroy'
+    end
+
+    resource :phone, only: [:update, :create, :destroy]
+    resource :phone, only: [:update, :create, :destroy], path: 'relationships/phone'
 
     resource :address, only: [:show, :update, :create, :destroy]
-    resource :address, only: [:show], path: 'relationships/address'
+    resource :address, only: [:show, :update, :create, :destroy], path: 'relationships/address'
 
   end
+  
   resources :kinds
-  # resources :phones
-  # resources :addresses
   # For details on the DSL available within this file, see https://guides.rubyonrails.org/routing.html
 end
