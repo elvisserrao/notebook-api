@@ -7,7 +7,7 @@ ruby '2.6.5'
 
 # Simple, multi-client and secure token-based authentication for Rails.
 gem 'devise_token_auth'
-# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard. 
+# A ruby implementation of the RFC 7519 OAuth JSON Web Token (JWT) standard.
 gem 'jwt'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
