@@ -54,6 +54,6 @@ class KindsController < ApplicationController
 
   # Only allow a trusted parameter "white list" through.
   def kind_params
-    params.require(:kind).permit(:description)
+    ActiveModelSerializers::Deserialization.jsonapi_parse(params)
   end
 end
