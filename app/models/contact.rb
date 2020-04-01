@@ -6,6 +6,9 @@ class Contact < ApplicationRecord
   has_one :address, dependent: :destroy
   has_many :phones, dependent: :destroy
 
+  validates_presence_of :address
+  validates_presence_of :kind
+
   accepts_nested_attributes_for :address, allow_destroy: true
   accepts_nested_attributes_for :phones, reject_if: ->(attributes) { attributes['number'].blank? }, allow_destroy: true
 

@@ -1,6 +1,8 @@
 # frozen_string_literal: true
 
 class ContactsController < ApplicationController
+  include ErrorSerializer
+
   before_action :authenticate_user!
   before_action :set_contact, only: %i[show update destroy]
 
@@ -25,7 +27,7 @@ class ContactsController < ApplicationController
     if @contact.save
       render json: @contact, status: :created, location: @contact
     else
-      render json: @contact.errors, status: :unprocessable_entity
+      render json: ErrorSerializer.serialize(@contact.errors) # @contact.errors, status: :unprocessable_entity
     end
   end
 
