@@ -1,6 +1,7 @@
 # frozen_string_literal: true
 
 class PhonesController < ApplicationController
+  before_action :authenticate_user!
   before_action :set_contact, only: %i[create show update destroy]
   before_action :set_phone, only: %i[display update destroy]
 
