@@ -8,6 +8,8 @@ ruby '2.6.5'
 # Simple, multi-client and secure token-based authentication for Rails.
 gem 'devise-i18n'
 gem 'devise_token_auth'
+# A Scope & Engine based, clean, powerful, customizable and sophisticated paginator for Ruby webapps
+gem 'kaminari'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '~> 6.0.2', '>= 6.0.2.1'
 # A set of common locale data and translations to internationalize and/or localize your Rails applications.
