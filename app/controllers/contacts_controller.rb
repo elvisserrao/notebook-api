@@ -12,7 +12,10 @@ class ContactsController < ApplicationController
     page_size = params[:page].try(:[], :size)
     @contacts = Contact.all.bonzo(page_number).per(page_size)
 
+    expires_in 30.seconds, public: true
+    # if stale?(etag: @contacts)
     render json: @contacts
+    # end
   end
 
   # GET /contacts/1
