@@ -9,10 +9,10 @@ class ApplicationController < ActionController::API
       unless request.get?
         return if request.headers['Content-Type'] =~ /json/
 
-        render nothing: true, status: 415
+        render body: nil, status: 415
       end
     else
-      render nothing: true, status: 406
+      render body: nil, status: 406
     end
   end
 end
