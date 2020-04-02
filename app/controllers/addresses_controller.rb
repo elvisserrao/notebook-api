@@ -1,7 +1,7 @@
 # frozen_string_literal: true
 
 class AddressesController < ApplicationController
-  before_action :authenticate_user!
+  # before_action :authenticate_user!
   before_action :set_contact, only: %i[show update create destroy]
 
   def show
