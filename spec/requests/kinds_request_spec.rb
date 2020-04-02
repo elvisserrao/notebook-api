@@ -17,9 +17,10 @@ RSpec.describe "Kinds", type: :request do
       end
     end
   
-    describe "GET /kinds/1" do
+    describe "GET /kinds/:id" do
       it "returns http success" do
-        get "/kinds/1", :headers => headers
+        contact = Contact.last
+        get "/kinds", params: { id: contact.id } , :headers => headers
         expect(response).to have_http_status(:success)
       end
     end

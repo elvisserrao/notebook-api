@@ -13,9 +13,9 @@ require 'rails_helper'
 #   end
 # end
 
-describe "Contacts", type: :request do
-
+describe "Contacts", type: :request do  
   headers = { "Accept" => "application/vnd.api+json" }
+  contact = Contact.last
   
   describe "GET /contacts" do
     it "returns http success" do
@@ -31,24 +31,24 @@ describe "Contacts", type: :request do
     end
   end
 
-  describe "GET /contacts/1" do
+  describe "GET /contacts/:id" do
     it "returns http success" do
-      get "/contacts/1", :headers => headers
+      get "/contacts/#{contact.id}", :headers => headers
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /contacts/1/phones" do
+  describe "GET /contacts/:id/phones" do
     it "returns http success" do
-      get "/contacts/1/phones", :headers => headers
+      get "/contacts/#{contact.id}/phones", :headers => headers
       expect(response).to have_http_status(:success)
     end
   end
 
-  describe "GET /contacts/1/address" do
+  describe "GET /contacts/:id/address" do
     it "returns http success" do
 
-      get "/contacts/1/address", :headers => headers
+      get "/contacts/#{contact.id}/address", :headers => headers
       expect(response).to have_http_status(:success)
     end
   end
