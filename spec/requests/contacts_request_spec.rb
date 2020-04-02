@@ -1,22 +1,10 @@
 require 'rails_helper'
 
-# describe ContactsController, type: :controller do
-#   it 'request: GET index and return 200 OK' do
-#     request.accept = 'application/vnd.api+json'
-#     get :index
-#     expect(response).to have_http_status(200)
-#   end
 
-#   it 'request: GET index and return 406 Not Acceptable' do
-#     get :index
-#     expect(response).to have_http_status(406)
-#   end
-# end
-
-describe "Contacts", type: :request do  
+describe "Contacts", type: :request do
   headers = { "Accept" => "application/vnd.api+json" }
   contact = Contact.last
-  
+
   describe "GET /contacts" do
     it "returns http success" do
       get "/contacts", :headers => headers
