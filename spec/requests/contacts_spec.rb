@@ -14,4 +14,11 @@ describe ContactsController, type: :controller do
 
   end
 
+  it 'Assign contact to @contact' do
+    request.accept = 'application/vnd.api+json'
+    get :show, params: {id: contact.id}
+
+    expect(assigns(:contact)).to eq(contact)
+  end
+
 end
