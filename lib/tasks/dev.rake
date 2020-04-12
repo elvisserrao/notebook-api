@@ -4,7 +4,7 @@ namespace :dev do
   desc 'Configura o ambiente de desenvolvimento'
   puts 'Gerando dados...'
   task setup: :environment do
-    
+
     %x(rails db:drop db:create db:migrate)
 
     kinds = %w[Amigo Trabalho Familia Conhecido]
@@ -15,13 +15,18 @@ namespace :dev do
       p "O tipo de contato #{kind.description} foi criado!"
     end
     50.times do
-      contact = Contact.create!(
+      contact = Contact.new(
         name: Faker::Name.name,
         email: Faker::Internet.email,
         birthdate: Faker::Date.between(from: 100.years.ago, to: 18.years.ago),
-        kind: Kind.all.sample
+        kind: Kind.all.sample,
+        address: Address.new(
+          street: Faker::Address.street_address,
+          city: Faker::Address.city
+        )
       )
-      puts "#{contact.name} was created with email: #{contact.email}"
+
+      puts "#{contact.name} was created with email: #{contact.email} at #{contact.address.street}, #{contact.address.city}"
     end
 
     puts 'Cadastrando os telefones...'
@@ -34,15 +39,5 @@ namespace :dev do
       end
     end
 
-    puts 'Cadastrando os endereços...'
-
-    Contact.all.each do |contact|
-      address = Address.create(
-        street: Faker::Address.street_address,
-        city: Faker::Address.city,
-        contact: contact
-      )
-
-    end
   end
 end
