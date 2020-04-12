@@ -33,6 +33,14 @@ end
 RSpec.configure do |config|
   # Remove this line if you're not using ActiveRecord or ActiveRecord fixtures
   config.fixture_path = "#{::Rails.root}/spec/fixtures"
+  
+  NotebookApi::Application.load_tasks
+  Rake::Task['dev:setup'].invoke
+
+  config = YAML::load(IO.read(File.dirname(__FILE__) + "/../config/database.yml"))
+  ActiveRecord::Base.logger = Logger.new(File.dirname(__FILE__) + "/../log/debug.log")
+  ActiveRecord::Base.establish_connection(config["test"])
+  load(File.dirname(__FILE__) + "/../db/schema.rb")
 
   # If you're not using ActiveRecord, or you'd prefer not to run each of your
   # examples within a transaction, remove the following line or assign false

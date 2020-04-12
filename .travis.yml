@@ -13,5 +13,5 @@ install:
 
 script:
   - bundle exec rubocop
-  - rails dev:setup
-  - bundle exec rspec
+  - chmod 777 db/test.sqlite3
+  - bundle exec rspec --require spec_helper --require rails_helper
