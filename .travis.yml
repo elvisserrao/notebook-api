@@ -1,0 +1,9 @@
+language: ruby
+
+rvm:
+  — 2.6.5
+
+script: "true"
+  — bundle install
+  - gem install rubocop
+  # && rubocop && bundle exec rspec
