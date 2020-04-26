@@ -1,24 +1,6 @@
-# README
+[![Maintainability](https://api.codeclimate.com/v1/badges/13abf6630a5660415ce1/maintainability)](https://codeclimate.com/github/elvisserrao/notebook-api/maintainability)
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+# Sobre o Projeto
 
-Things you may want to cover:
+Este projeto foi feito para fins de aprendizado. Onde busquei me familiarizar com diversas práticas e padrões.
 
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
